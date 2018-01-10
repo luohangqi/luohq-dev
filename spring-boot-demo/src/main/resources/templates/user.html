@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>user</title>
+
+<script type="text/javascript" th:src="@{/js/jquery-3.2.1.min.js}"></script>
+
+<script th:inline="javascript">
+	function btnOnclick() {
+		alert(1);
+		var data = $("#form").serialize();
+		alert(data);
+	}
+
+	function getVideo(id) {
+		alert(1);
+		//alert(${pageContext.request.contextPath});
+		//window.location.href="${pageContext.request.contextPath}/getVideo.do?id="+id;
+		$.ajax({
+			url : "/video/id = " + id,
+			async : false
+		});
+
+	}
+</script>
+
+
+
+
+</head>
+<body>
+
+
+	<h1 th:inlines="text">Hello</h1>
+	<p th:text="${hello}">111</p>
+
+	<form id="form" action="">
+		First name: <input type="text" name="FirstName" value="Bill" /><br />
+		Last name: <input type="text" name="LastName" value="Gates" /><br />
+		<input type="submit" name="g" value="Submit" id="g" />
+	</form>
+	<button id="btnSerialize" onclick="btnOnclick()">序列化表单值</button>
+
+
+	<h1 th:inlines="text">video</h1>
+	<button id="btn" onclick="getVideo('1111')">播放</button>
+	<video width="320" height="240" controls> <!-- autoplay -->
+		<source src="movie.ogg" type="video/ogg">
+		<source src="video/{id}" type="video/mp4">
+		<source src="movie.webm" type="video/webm">
+		<object data="movie.mp4" width="320" height="240">
+			<embed width="320" height="240" src="movie.swf">
+		</object>
+	</video>
+
+
+</body>
+</html>

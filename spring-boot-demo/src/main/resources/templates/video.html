@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>user</title>
+
+<script type="text/javascript" th:src="@{/js/jquery-3.2.1.min.js}"></script>
+<link th:href="@{/css/video-js.css}" rel="stylesheet" type="text/css">
+<script th:src="@{/js/video.min.js}"></script>
+<script th:inline="javascript">
+	videojs.options.flash.swf = "video-js.swf";
+</script>
+
+
+</head>
+<body>
+
+	<h1>hello</h1>
+
+	<video id="example_video_1" class="video-js vjs-default-skin" controls
+		preload="none" width="640" height="264"
+		 data-setup="{}"> <!-- poster="http://video-js.zencoder.com/oceans-clip.png" -->
+		<source src="/query/video/{id}" type='video/mp4' />
+		<source src="http://视频地址格式2.webm" type='video/webm' />
+		<source src="http://视频地址格式3.ogv" type='video/ogg' />
+		<track kind="captions" src="demo.captions.vtt" srclang="en"
+			label="English"></track>
+		<!-- Tracks need an ending tag thanks to IE9 -->
+		<track kind="subtitles" src="demo.captions.vtt" srclang="en"
+			label="English"></track>
+		<!-- Tracks need an ending tag thanks to IE9 -->
+	</video>
+
+</body>
+</html>
